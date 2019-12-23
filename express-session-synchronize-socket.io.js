@@ -1,7 +1,22 @@
 const
+    // memory store
     session = {
         http: {}
         ,tcp: {}
+
+        ,config: {}
+
+        ,set( config ) {
+
+            if( typeof config !== "object")
+                return;
+
+            Object.keys( config ).forEach( attr => {
+                session.config[ attr ] = config[attr]
+            } ) ;
+
+            return session;
+        }
 
         ,_model: null
         ,get model() {
@@ -89,55 +104,69 @@ const
             } ;
         }
     }
-;
 
-const middlewares = {
+    // callbacks dist
+    ,middlewares = {
 
-    express: function( req , res , next ) {
+        express: function( req , res , next ) {
 
-        let {pathGetSession} = session ;
+            const {config} = session;
 
-        if( !!pathGetSession ) {
+            let {pathGetSession,autoSynchro} = config ;
 
-            // render HTTP session in micro-service for browser access
+            if( !!autoSynchro ) {
+                // auto synchronize between request
+                session.synchronize( {
+                    model: 'http'
+                    ,target: 'tcp'
+                } ) ;
+            }
 
-            if( typeof pathGetSession === "string" ) // string === exact path
-                pathGetSession = new RegExp( "^"+pathGetSession+"$") ;
+            if( !!pathGetSession ) {
 
-            if( !(pathGetSession instanceof RegExp) ) // back to default path
-                pathGetSession = new RegExp("^"+"/get/session"+"$") ;
+                // render HTTP session in micro-service for browser access
 
-            if( pathGetSession.test(req.url) ) {
-                // this url match with get session
-                res.type('application/json') ;
-                res.send( JSON.stringify( session.http ) ) ;
+                if( typeof pathGetSession === "string" ) // string === exact path
+                    pathGetSession = new RegExp( "^"+pathGetSession+"$") ;
+
+                if( !(pathGetSession instanceof RegExp) ) // back to default path
+                    pathGetSession = new RegExp("^"+"/get/session"+"$") ;
+
+                if( pathGetSession.test(req.url) ) {
+                    // this url match with get session
+                    res.type('application/json') ;
+                    res.send( JSON.stringify( session.http ) ) ;
+
+                } else {
+                    // access session in request and free middleware
+                    req.session = session.done( 'http' ) ;
+                    next() ;
+                }
 
             } else {
+                // client want an manual control send session , auto micro-service HTTP session is reject by client
+
                 // access session in request and free middleware
                 req.session = session.done( 'http' ) ;
                 next() ;
             }
+        }
 
-        } else {
-            // client want an manual control send session , auto micro-service HTTP session is reject by client
+        ,socketIO: function( socket , next ) {
 
-            // access session in request and free middleware
-            req.session = session.done( 'http' ) ;
+            socket.session = session.done( 'tcp' )
             next() ;
         }
+
     }
+;
 
-    ,socketIO: function( socket , next ) {
+module.exports = function( pathGetSession = "/get/session" , autoSynchro = true ) {
 
-        socket.session = session.done( 'tcp' )
-        next() ;
-    }
-
-} ;
-
-module.exports = function( pathGetSession = "/get/session" ) {
-
-    session.pathGetSession = pathGetSession ;
+    session.set( {
+        pathGetSession: pathGetSession
+        ,autoSynchro: autoSynchro
+    } ) ;
 
     return middlewares ;
 } ;
