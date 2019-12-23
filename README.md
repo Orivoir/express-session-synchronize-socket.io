@@ -1,4 +1,4 @@
-# express-session-synchronize-socket.io `version 0.1.0`
+# express-session-synchronize-socket.io `version 0.1.3`
 > express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
 
 ### `npm i express-session-synchronize-socket.io --save`
