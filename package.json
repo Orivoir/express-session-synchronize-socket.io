@@ -1,15 +1,15 @@
 {
   "name": "express-session-synchronize-socket.io",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "express session synchronize with socket.io , auto render HTTP session with micro-service",
   "main": "express-session-synchronize-socket.io.js",
   "scripts": {
   },
   "repository": {
     "type": "git"
-    ,"url":"https://github.com/express-session-synchronize-socket.io.git"
+    ,"url":"https://github.com/Orivoir/express-session-synchronize-socket.io.git"
   },
   "keywords": ["express","session","socket","io","session API","synchronize","http","tcp","tcp/ip","udp","socket.io","memory store"],
-  "author": "orivoir21",
+  "author": "S.Gaborieau <sam.gabor@hotmail.com>",
   "license": "ISC"
 }
