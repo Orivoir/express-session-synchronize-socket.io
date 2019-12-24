@@ -1,6 +1,6 @@
 {
   "name": "express-session-synchronize-socket.io",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "express session synchronize with socket.io , auto render HTTP session with micro-service",
   "main": "express-session-synchronize-socket.io.js",
   "scripts": {

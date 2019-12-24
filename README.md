@@ -1,4 +1,4 @@
-# express-session-synchronize-socket.io `version 0.1.5`
+# express-session-synchronize-socket.io `version 0.1.6`
 > express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
 
 ### `npm i express-session-synchronize-socket.io --save`
@@ -19,7 +19,7 @@ const
 
 app
     // ... you'r other middlewares
-    .use( session.express )
+    .use( session.express( /* default value session optional */ ) )
     // ... you'r other middlewares
 ;
 
@@ -46,7 +46,7 @@ app.get('/' , (req,res) => {
 
 io
     // ... you'r other middlewares
-    .use( session.socketIO )
+    .use( session.socketIO( /* default value session optional */ ) )
     // ... you'r other middlewares
 ;
 
