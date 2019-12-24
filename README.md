@@ -98,3 +98,55 @@ server.listen( 80 , () => console.log('server run ...') ) ;
     // ... ,
 
 ```
+
+## `GET` /get/session `JSON`
+
+access to `HTTP` session from **default** route
+use you `HTTP` session with an **micro-service**
+and **easier** build **view render**
+with **Reactjs** , **Angularjs** , **Emberjs** or *other* *framework/library* **Javascript**
+
+## custom micro-service `HTTP` session
+
+## config middleware
+```javascript
+
+    // ... ,
+    session = require('express-session-synchronize-socket.io')(
+        null, // give null for not default route access session
+        true
+    )
+    // ... ,
+```
+
+## define your routes with **express** *e.g* :
+```javascript
+    // ... ,
+    app
+        .get('/get/session/avatar' , ( req , res ) => {
+            // return only avatar session
+
+            res.json( req.session.user.avatar || null ) ;
+        } )
+        .get('/get/session/username' , ( req , res ) => {
+
+            res.json( req.session.user.username || null )
+        } )
+        .get( '/get/session/create-at' , ( req , res ) => {
+
+            res.json( req.session.user.createAt ) ;
+        } )
+        .get('/get/session/all' , ( req , res ) => {
+
+            // all is only user here
+
+            res.json( req.session.user ) ;
+        } )
+    ;
+```
+
+## session HTTP is not save in cookies this package use local state of Nodejs for an memory store
+
+you can thus easily imagine a structure using a notion of session server and client session the client session data being distributed in micro service for example where sent to your template in a more traditional way
+
+### develop by [Samuel Gaborieau](https://orivoir.github.io/profil-reactjs/) with <3 and **Nodejs** for **open source** and **enjoy**
