@@ -1,6 +1,8 @@
 {
+  "private": false,
   "name": "express-session-synchronize-socket.io",
-  "version": "0.1.6",
+  "homepage": "https://https://github.com/Orivoir/express-live-reloading",
+  "version": "0.2.0",
   "description": "express session synchronize with socket.io , auto render HTTP session with micro-service",
   "main": "express-session-synchronize-socket.io.js",
   "scripts": {
@@ -16,6 +18,7 @@
     ,"socket"
     ,"io"
     ,"API"
+    ,"use"
     ,"synchronize"
     ,"http"
     ,"tcp"
@@ -26,6 +29,6 @@
     ,"memory store"
     ,"udp"
   ],
-  "author": "S.Gaborieau <sam.gabor@hotmail.com>",
-  "license": "ISC"
+  "author": "Samuel Gaborieau <sam.gabor@hotmail.com> (https://orivoir.github.io/profil-reactjs/)",
+  "license": "BSD-2-Clause"
 }

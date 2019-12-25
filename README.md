@@ -1,10 +1,18 @@
-# [express-session-synchronize-socket.io](https://www.npmjs.com/package/express-session-synchronize-socket.io) `version 0.1.6`
-> express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+# [express-session-synchronize-socket.io](https://www.npmjs.com/package/express-session-synchronize-socket.io)
+
+[![npm](https://img.shields.io/npm/l/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
+[![npm downloads](https://img.shields.io/npm/dm/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
+[![npm version](https://img.shields.io/npm/v/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
+
+
+express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+
+## Installation
 
 ### `npm i express-session-synchronize-socket.io --save`
 ### `yarn add express-session-synchronize-socket.io`
 
-### you can use:
+### usage:
 
 #### server.js
 ```javascript
@@ -149,4 +157,4 @@ with **Reactjs** , **Angularjs** , **Emberjs** or *other* *framework/library* **
 
 you can thus easily imagine a structure using a notion of session server and client session the client session data being distributed in micro service for example where sent to your template in a more traditional way
 
-### develop by [Samuel Gaborieau](https://orivoir.github.io/profil-reactjs/) with <3 and **Nodejs** for **open source** and **enjoy**
+#### develop by [Samuel Gaborieau](https://orivoir.github.io/profil-reactjs/) with <3 and **Nodejs** for **open source** and **enjoy**
