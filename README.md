@@ -5,7 +5,9 @@
 [![npm version](https://img.shields.io/npm/v/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
 
 
-express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+> express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+
+![logo synchronyze symbol](./synchronyze-logo.png)
 
 ## Installation
 
