@@ -5,7 +5,9 @@
 [![npm version](https://img.shields.io/npm/v/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
 
 
-express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+> express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+
+![logo synchronyze symbol](./synchronyze-logo.png)
 
 ## Installation
 
@@ -33,13 +35,13 @@ app
 
 app.get('/' , (req,res) => {
 
-    const val = req.session.val ; // memory store access
+    const val = req.session.val ; // session HTTP access
 
     if( !val.id ) {
 
         req.session.val.id = Math.random() ; // define one key id for current session
 
-        // manual synchronize memory store with tcp store
+        // manual synchronize session with tcp store
         req.session.synchronize( {
             model: "http"
             ,target: "tcp"
@@ -62,7 +64,8 @@ io.on('connect' , socket => {
 
     const val = socket.session.val;
 
-    console.log( 'from TCP: ' , val.id ) ; // output <- 0.xxx... , after request on "/" ,  because HTTP controller have synchronize memory strore
+    // 0.xxx... , after request on "/" ,  because HTTP controller have synchronize memory strore
+    console.log( 'from TCP: ' , val.id ) ;
 
 } ) ;
 
