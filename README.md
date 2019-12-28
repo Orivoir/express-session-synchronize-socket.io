@@ -4,6 +4,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
 [![npm version](https://img.shields.io/npm/v/express-session-synchronize-socket.io.svg?style=for-the-badge)](https://www.npmjs.com/package/express-session-synchronize-socket.io)
 
+[![Build Status](https://travis-ci.org/Orivoir/express-session-synchronize-socket.io.svg?branch=master)](https://travis-ci.org/Orivoir/express-session-synchronize-socket.io)
+[![codecov](https://codecov.io/gh/Orivoir/express-session-synchronize-socket.io/branch/master/graph/badge.svg)](https://codecov.io/gh/Orivoir/express-session-synchronize-socket.io)
 
 > express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
 
