@@ -9,8 +9,6 @@
 
 > express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
 
-![logo synchronyze symbol](./synchronyze-logo.png)
-
 ## Installation
 
 ### `npm i express-session-synchronize-socket.io --save`
