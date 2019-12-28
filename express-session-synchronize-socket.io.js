@@ -38,6 +38,19 @@ module.exports = function(
     ,autoSynchro = true
 ) {
 
+    if(
+        typeof pathGetSession !== 'string' &&
+        ( typeof pathGetSession !== 'object' || !pathGetSession.source )
+    ) {
+        throw new TypeError('arg1 pathGetSession bust be an string') ;
+    }
+    if( typeof pathGetSession === 'object' ) {
+        // not support regexp
+        pathGetSession = pathGetSession.source ;
+    }
+
+    autoSynchro = !!autoSynchro ;
+
     session.set( {
         pathGetSession: pathGetSession
         ,autoSynchro: autoSynchro
