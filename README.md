@@ -87,6 +87,7 @@ server.listen( 80 , () => console.log('server run ...') ) ;
             <h1>Lorem Ipsum</h1>
         </main>
 
+        <!-- only if you use socket.io module -->
         <script src="/socket.io/socket.io.js"></script>
         <script>
             const socket = io('/') ;
