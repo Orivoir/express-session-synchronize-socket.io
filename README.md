@@ -7,7 +7,8 @@
 [![Build Status](https://travis-ci.org/Orivoir/express-session-synchronize-socket.io.svg?branch=master)](https://travis-ci.org/Orivoir/express-session-synchronize-socket.io)
 [![codecov](https://codecov.io/gh/Orivoir/express-session-synchronize-socket.io/branch/master/graph/badge.svg)](https://codecov.io/gh/Orivoir/express-session-synchronize-socket.io)
 
-> express middleware session can use with socket.io have synchronizer session method and micro-service get session HTTP
+> express middleware session can be attach to `socket.io`
+> have an **synchronizer** session and can dist session HTTP with **micro-service**
 
 ## Installation
 
