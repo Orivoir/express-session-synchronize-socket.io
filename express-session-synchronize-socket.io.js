@@ -2,11 +2,12 @@
  * @author S.Gaborieau <sam.gabor@hotmail.com>
  *
  * @package [npm] express-session-synchronize-socket.io
- * @version 0.1.5 `stable version`
+ * @version 0.3.0 `pre version`
  *
  * @git <https://github.com/Orivoir/express-session-synchronize-socket.io>
  * @npm <https://www.npmjs.com/package/express-session-synchronize-socket.io>
  */
+process['express-session-synchronize-socket.io'] = {/* 🐱‍👤 */} ;
 
 const
     /**
@@ -34,19 +35,21 @@ const
 module.exports = function(
 
     pathGetSession = "/get/session"
-
     ,autoSynchro = true
 ) {
 
     if(
-        typeof pathGetSession !== 'string' &&
-        ( typeof pathGetSession !== 'object' || !pathGetSession.source )
+        !/string|undefined|object/i.test( typeof pathGetSession )
     ) {
-        throw new TypeError('arg1 pathGetSession bust be an string') ;
+        throw new TypeError('arg1 pathGetSession optional , bust be an string or regexp') ;
     }
     if( typeof pathGetSession === 'object' ) {
         // not support regexp
         pathGetSession = pathGetSession.source ;
+    }
+
+    if( !pathGetSession ) {
+        throw new TypeError('arg1 pathGetSession optional , bust be an string or regexp') ;
     }
 
     autoSynchro = !!autoSynchro ;

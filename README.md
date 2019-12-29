@@ -26,7 +26,6 @@ const
     , io = require('socket.io')( server )
 ;
 
-
 app
     // ... you'r other middlewares
     .use( session.express( /* default value session optional */ ) )
@@ -108,6 +107,69 @@ server.listen( 80 , () => console.log('server run ...') ) ;
     )
     // ... ,
 
+```
+
+## custom you access to `session values`
+
+#### server.js
+```javascript
+const
+    exp = require('express')
+    ,app = exp()
+    ,server = require('http').Server( app )
+    ,session = require('express-session-synchronize-socket.io')()
+    , io = require('socket.io')( server )
+;
+
+app
+    // ... you'r other middlewares
+    .use( session.express(
+        {} /* default value session optional */
+        "data" , // name key session access
+    ) )
+    // ... you'r other middlewares
+;
+
+app.get('/' , (req,res) => {
+
+    const data = req.session.data ; // access with data key now
+
+    if( !data.id ) {
+
+        req.session.data.id = Math.random() ; // define one key id for current session
+
+        // manual synchronize session with tcp store
+        req.session.synchronize( {
+            model: "http"
+            ,target: "tcp"
+        } ) ;
+    }
+
+    console.log('from HTTP: ' , data.id ) ;
+
+    res.sendFile('./index.html') ;
+
+} ) ;
+
+io
+    // ... you'r other middlewares
+    .use( session.socketIO(
+        {} /* default value session optional */
+        , "data" // name key session access
+    ) )
+    // ... you'r other middlewares
+;
+
+io.on('connect' , socket => {
+
+    const data = socket.session.data; // access with data now
+
+    // 0.xxx... , after request on "/" ,  because HTTP controller have synchronize memory strore
+    console.log( 'from TCP: ' , data.id ) ;
+
+} ) ;
+
+server.listen( 80 , () => console.log('server run ...') ) ;
 ```
 
 ## `GET` /get/session `JSON`
